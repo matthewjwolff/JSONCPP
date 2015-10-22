@@ -24,10 +24,22 @@ void TokenizerTester::tearDown() {
 }
 
 void TokenizerTester::testGetNextToken() {
-    Tokenizer* tokenizer = new Tokenizer(new std::stringstream("{\"test\":true}"));
+    Tokenizer* tokenizer = new Tokenizer(new std::stringstream("{\"test\":-123.456, \"otherString\":true}"));
     Token* result = tokenizer->getNextToken();
-    if (result->getType() == LBRACE) {
-        CPPUNIT_ASSERT(true);
-    }
+    if (result->getType() != LBRACE)
+        CPPUNIT_ASSERT(false);
+    result = tokenizer->getNextToken();
+    if(result->getType() != STRING)
+        CPPUNIT_ASSERT(false);
+    if(result->getString() != "test")
+        CPPUNIT_ASSERT(false);
+    result = tokenizer->getNextToken();
+    if(result->getType() != COLON)
+        CPPUNIT_ASSERT(false);
+    result = tokenizer->getNextToken();
+    if(result->getType() != NUMBER) 
+        CPPUNIT_ASSERT(false);
+    if(result->getNumber() != -123.456)
+        CPPUNIT_ASSERT(false);
 }
 

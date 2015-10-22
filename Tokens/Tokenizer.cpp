@@ -10,7 +10,7 @@
 #include "StringToken.h"
 #include <cstdlib>
 
-Tokenizer::Tokenizer(std::istream* stream) {
+Tokenizer::Tokenizer(std::iostream* stream) {
     this->stream = stream;
 }
 
@@ -73,11 +73,13 @@ Token* Tokenizer::getNextToken() {
     //Build number literal
     if((next>47 && next<58) || next=='-') {
         std::string buffer;
-        *stream>>next;
-        while(next!=' ') {
+        while(next!=' ' && next!=',' && next!=']' && next!='}') {
             buffer+=next;
             *stream>>next;
         }
+        //If we consumed a comma, bracket, or brace, we need to put it back.
+        if(next!=' ')
+            *stream<<next;
         double value = std::strtod(buffer.c_str(), NULL);
         return new NumberToken(value);
     }

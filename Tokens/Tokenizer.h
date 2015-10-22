@@ -13,12 +13,12 @@
 
 class Tokenizer {
 public:
-    Tokenizer(std::istream* stream);
+    Tokenizer(std::iostream* stream);
     Tokenizer(const Tokenizer& orig);
     virtual ~Tokenizer();
     Token* getNextToken();
 private:
-    std::istream* stream;
+    std::iostream* stream;
 };
 
 #endif	/* TOKENIZER_H */

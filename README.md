@@ -8,7 +8,6 @@ Then please peruse the repository and point out things I've done wrong. That inc
 Fine. At least look at the next section and see if you can spare a few moments to answer some general questions I have. You'll see those there.
 
 ## Stuff I'm trying to figure out
-* CppUnit would be nice to get working... But every time I try to set up a test I get a bunch of duplicate method definitions.
 * What's the convention for #include header files? Do you make one header for every .cpp file and put any dependency headers there? Or do they just go wherever you want?
 
 ## Tech Stack:

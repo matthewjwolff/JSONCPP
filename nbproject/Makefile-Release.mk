@@ -38,7 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Tokens/NumberToken.o \
 	${OBJECTDIR}/Tokens/StringToken.o \
 	${OBJECTDIR}/Tokens/Token.o \
-	${OBJECTDIR}/Tokens/Tokenizer.o
+	${OBJECTDIR}/Tokens/Tokenizer.o \
+	${OBJECTDIR}/Values/JSONString.o \
+	${OBJECTDIR}/Values/JSONValue.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -90,6 +92,16 @@ ${OBJECTDIR}/Tokens/Tokenizer.o: Tokens/Tokenizer.cpp
 	${MKDIR} -p ${OBJECTDIR}/Tokens
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tokens/Tokenizer.o Tokens/Tokenizer.cpp
+
+${OBJECTDIR}/Values/JSONString.o: Values/JSONString.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONString.o Values/JSONString.cpp
+
+${OBJECTDIR}/Values/JSONValue.o: Values/JSONValue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONValue.o Values/JSONValue.cpp
 
 # Subprojects
 .build-subprojects:
@@ -163,6 +175,32 @@ ${OBJECTDIR}/Tokens/Tokenizer_nomain.o: ${OBJECTDIR}/Tokens/Tokenizer.o Tokens/T
 	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tokens/Tokenizer_nomain.o Tokens/Tokenizer.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Tokens/Tokenizer.o ${OBJECTDIR}/Tokens/Tokenizer_nomain.o;\
+	fi
+
+${OBJECTDIR}/Values/JSONString_nomain.o: ${OBJECTDIR}/Values/JSONString.o Values/JSONString.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Values/JSONString.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONString_nomain.o Values/JSONString.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Values/JSONString.o ${OBJECTDIR}/Values/JSONString_nomain.o;\
+	fi
+
+${OBJECTDIR}/Values/JSONValue_nomain.o: ${OBJECTDIR}/Values/JSONValue.o Values/JSONValue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Values/JSONValue.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONValue_nomain.o Values/JSONValue.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Values/JSONValue.o ${OBJECTDIR}/Values/JSONValue_nomain.o;\
 	fi
 
 # Run Test Targets

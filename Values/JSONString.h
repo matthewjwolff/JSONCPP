@@ -15,6 +15,7 @@ public:
     JSONString(JSONValue* parent, std::string* value);
     bool isString();
     std::string* getString();
+    int getData();
 private:
     std::string* value;
 };

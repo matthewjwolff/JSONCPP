@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Values/JSONBool.h</itemPath>
+      <itemPath>Values/JSONNull.h</itemPath>
       <itemPath>Values/JSONString.h</itemPath>
       <itemPath>Values/JSONValue.h</itemPath>
       <itemPath>Tokens/NumberToken.h</itemPath>
@@ -19,6 +21,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Values/JSONBool.cpp</itemPath>
+      <itemPath>Values/JSONNull.cpp</itemPath>
       <itemPath>Values/JSONString.cpp</itemPath>
       <itemPath>Values/JSONValue.cpp</itemPath>
       <itemPath>Tokens/NumberToken.cpp</itemPath>
@@ -73,6 +77,14 @@
       <item path="Tokens/Tokenizer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Tokens/Tokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Values/JSONBool.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Values/JSONBool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Values/JSONNull.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Values/JSONNull.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Values/JSONString.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -140,6 +152,14 @@
       <item path="Tokens/Tokenizer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Tokens/Tokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Values/JSONBool.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Values/JSONBool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Values/JSONNull.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Values/JSONNull.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Values/JSONString.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -11,6 +11,10 @@ JSONString::JSONString(JSONValue* parent, std::string* value) : JSONValue::JSONV
     this->value = value;
 }
 
+int JSONString::getData() {
+    return *value;
+}
+
 bool JSONString::isString() {
     return true;
 }

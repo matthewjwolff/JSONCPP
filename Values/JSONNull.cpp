@@ -10,16 +10,6 @@
 JSONNull::JSONNull(JSONValue* parent) : JSONValue::JSONValue(parent) {
 }
 
-JSONNull::JSONNull(const JSONNull& orig) {
-}
-
-JSONNull::~JSONNull() {
-}
-
 bool JSONNull::isNull() {
     return true;
-}
-
-int JSONNull::getData() {
-    return 0;
 }

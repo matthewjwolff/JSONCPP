@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Tokens/StringToken.o \
 	${OBJECTDIR}/Tokens/Token.o \
 	${OBJECTDIR}/Tokens/Tokenizer.o \
+	${OBJECTDIR}/Values/JSONArray.o \
 	${OBJECTDIR}/Values/JSONBool.o \
 	${OBJECTDIR}/Values/JSONNull.o \
 	${OBJECTDIR}/Values/JSONString.o \
@@ -94,6 +95,11 @@ ${OBJECTDIR}/Tokens/Tokenizer.o: Tokens/Tokenizer.cpp
 	${MKDIR} -p ${OBJECTDIR}/Tokens
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tokens/Tokenizer.o Tokens/Tokenizer.cpp
+
+${OBJECTDIR}/Values/JSONArray.o: Values/JSONArray.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONArray.o Values/JSONArray.cpp
 
 ${OBJECTDIR}/Values/JSONBool.o: Values/JSONBool.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Values
@@ -187,6 +193,19 @@ ${OBJECTDIR}/Tokens/Tokenizer_nomain.o: ${OBJECTDIR}/Tokens/Tokenizer.o Tokens/T
 	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tokens/Tokenizer_nomain.o Tokens/Tokenizer.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Tokens/Tokenizer.o ${OBJECTDIR}/Tokens/Tokenizer_nomain.o;\
+	fi
+
+${OBJECTDIR}/Values/JSONArray_nomain.o: ${OBJECTDIR}/Values/JSONArray.o Values/JSONArray.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Values/JSONArray.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONArray_nomain.o Values/JSONArray.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Values/JSONArray.o ${OBJECTDIR}/Values/JSONArray_nomain.o;\
 	fi
 
 ${OBJECTDIR}/Values/JSONBool_nomain.o: ${OBJECTDIR}/Values/JSONBool.o Values/JSONBool.cpp 

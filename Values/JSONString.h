@@ -9,13 +9,13 @@
 #define	JSONSTRING_H
 
 #include "JSONValue.h"
+#include <string>
 
 class JSONString : public JSONValue {
 public:
     JSONString(JSONValue* parent, std::string* value);
     bool isString();
     std::string* getString();
-    int getData();
 private:
     std::string* value;
 };

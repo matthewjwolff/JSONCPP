@@ -11,7 +11,6 @@
 class JSONValue {
 public:
     JSONValue(JSONValue* parent);
-    virtual int getData() = 0;
     virtual bool isArray();
     virtual bool isString();
     virtual bool isNumber();

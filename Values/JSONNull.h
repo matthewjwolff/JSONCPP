@@ -13,10 +13,7 @@
 class JSONNull : public JSONValue {
 public:
     JSONNull(JSONValue* parent);
-    JSONNull(const JSONNull& orig);
-    virtual ~JSONNull();
     bool isNull();
-    int getData();
 private:
 
 };

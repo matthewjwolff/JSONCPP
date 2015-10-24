@@ -12,13 +12,10 @@
 
 class JSONBool : public JSONValue {
 public:
-    JSONBool(JSONValue* parent, bool value);
-    JSONBool(const JSONBool& orig);
-    virtual ~JSONBool();
-    int getData();
-    bool getValue();
+    JSONBool(JSONValue* parent, bool* value);
+    bool* getValue();
 private:
-    bool value;
+    bool* value;
 };
 
 #endif	/* JSONBOOL_H */

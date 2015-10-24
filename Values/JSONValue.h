@@ -12,6 +12,7 @@ class JSONValue {
 public:
     JSONValue(JSONValue* parent);
     virtual bool isArray();
+    virtual bool isObject();
     virtual bool isString();
     virtual bool isNumber();
     virtual bool isBool();

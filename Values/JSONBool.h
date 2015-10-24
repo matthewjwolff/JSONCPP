@@ -13,6 +13,7 @@
 class JSONBool : public JSONValue {
 public:
     JSONBool(JSONValue* parent, bool* value);
+    bool isBool();
     bool* getValue();
 private:
     bool* value;

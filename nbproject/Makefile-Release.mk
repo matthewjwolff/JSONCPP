@@ -42,6 +42,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Values/JSONArray.o \
 	${OBJECTDIR}/Values/JSONBool.o \
 	${OBJECTDIR}/Values/JSONNull.o \
+	${OBJECTDIR}/Values/JSONNumber.o \
+	${OBJECTDIR}/Values/JSONObject.o \
 	${OBJECTDIR}/Values/JSONString.o \
 	${OBJECTDIR}/Values/JSONValue.o
 
@@ -110,6 +112,16 @@ ${OBJECTDIR}/Values/JSONNull.o: Values/JSONNull.cpp
 	${MKDIR} -p ${OBJECTDIR}/Values
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONNull.o Values/JSONNull.cpp
+
+${OBJECTDIR}/Values/JSONNumber.o: Values/JSONNumber.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONNumber.o Values/JSONNumber.cpp
+
+${OBJECTDIR}/Values/JSONObject.o: Values/JSONObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONObject.o Values/JSONObject.cpp
 
 ${OBJECTDIR}/Values/JSONString.o: Values/JSONString.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Values
@@ -232,6 +244,32 @@ ${OBJECTDIR}/Values/JSONNull_nomain.o: ${OBJECTDIR}/Values/JSONNull.o Values/JSO
 	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONNull_nomain.o Values/JSONNull.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Values/JSONNull.o ${OBJECTDIR}/Values/JSONNull_nomain.o;\
+	fi
+
+${OBJECTDIR}/Values/JSONNumber_nomain.o: ${OBJECTDIR}/Values/JSONNumber.o Values/JSONNumber.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Values/JSONNumber.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONNumber_nomain.o Values/JSONNumber.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Values/JSONNumber.o ${OBJECTDIR}/Values/JSONNumber_nomain.o;\
+	fi
+
+${OBJECTDIR}/Values/JSONObject_nomain.o: ${OBJECTDIR}/Values/JSONObject.o Values/JSONObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Values
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Values/JSONObject.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Values/JSONObject_nomain.o Values/JSONObject.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Values/JSONObject.o ${OBJECTDIR}/Values/JSONObject_nomain.o;\
 	fi
 
 ${OBJECTDIR}/Values/JSONString_nomain.o: ${OBJECTDIR}/Values/JSONString.o Values/JSONString.cpp 

@@ -32,6 +32,10 @@ bool JSONValue::isNumber() {
     return false;
 }
 
+bool JSONValue::isObject() {
+    return false;
+}
+
 bool JSONValue::isString() {
     return false;
 }

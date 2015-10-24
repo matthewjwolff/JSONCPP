@@ -11,6 +11,10 @@ JSONBool::JSONBool(JSONValue* parent, bool* value) : JSONValue::JSONValue(parent
     this->value = value;
 }
 
+bool JSONBool::isBool() {
+    return true;
+}
+
 bool* JSONBool::getValue() {
     return value;
 }
